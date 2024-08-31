@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define SIZE 1000
+
+char* wrapper_strdup(const char* p) {
+    if (p == NULL) {
+        return NULL; // Return NULL if the input string is NULL
+    }
+
+    // Allocate memory
+    char* pd = (char*)malloc(strlen(p) + 1);
+    if (!pd) {
+        // Print error message if memory allocation fails and return NULL
+        fprintf(stderr, "Memory allocation failed.\n");
+        return NULL;
+    }
+
+    // Copy the string
+    return strcpy(pd, p);
+}
+
+int main(void) {
+    char str[SIZE];
+
+    printf("Enter a string: ");
+    if (scanf("%999s", str) != 1) {
+        fprintf(stderr, "Failed to read input.\n");
+        return EXIT_FAILURE;
+    }
+
+    printf("Original string: (%s)\n", str);
+
+    char* pd = wrapper_strdup(str);
+
+    if (pd != NULL) {
+        printf("Duplicated string: (%s)\n", pd);
+        
+        free(pd);
+    } else {
+        fprintf(stderr, "Failed to duplicate string.\n");
+    }
+
+    return 0;
+}
