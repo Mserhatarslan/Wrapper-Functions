@@ -6,18 +6,15 @@
 
 char* wrapper_strdup(const char* p) {
     if (p == NULL) {
-        return NULL; // Return NULL if the input string is NULL
+        return NULL; 
     }
 
-    // Allocate memory
     char* pd = (char*)malloc(strlen(p) + 1);
     if (!pd) {
-        // Print error message if memory allocation fails and return NULL
         fprintf(stderr, "Memory allocation failed.\n");
         return NULL;
     }
 
-    // Copy the string
     return strcpy(pd, p);
 }
 
