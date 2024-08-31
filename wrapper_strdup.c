@@ -31,13 +31,8 @@ int main(void) {
 
     char* pd = wrapper_strdup(str);
 
-    if (pd != NULL) {
-        printf("Duplicated string: (%s)\n", pd);
-        
-        free(pd);
-    } else {
-        fprintf(stderr, "Failed to duplicate string.\n");
-    }
+    free(pd);
+
 
     return 0;
 }
